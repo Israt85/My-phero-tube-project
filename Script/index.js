@@ -10,12 +10,16 @@ const loadData = async () => {
     categoryBtn.appendChild(div)
   });
   console.log(data.data)
+  
 }
 const handleLoad = async (categoryId) => {
+
+  console.log(categoryId);
   const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
   const data = await res.json()
   const cardContainer = document.getElementById("card-container")
-  console.log(data.data)
+  cardContainer.innerHTML=""
+
   data.data.forEach((card) => {
     const div = document.createElement("div")
     div.innerHTML = `
@@ -57,5 +61,5 @@ const handleLoad = async (categoryId) => {
   })
 }
 
-
-loadData()
+loadData();
+handleLoad(1000);
