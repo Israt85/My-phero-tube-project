@@ -9,7 +9,7 @@ const loadData = async () => {
         `
     categoryBtn.appendChild(div)
   });
-  console.log(data.data)
+
   
 }
 const showTime = (sec) => {
@@ -33,7 +33,7 @@ const showTime = (sec) => {
   ];
 
  
-  if (hrs === 0 && min === 0 && sec === 0) {
+  if (hrs === 0 && min === 0) {
     classList.push('hidden');
   }
 
@@ -46,8 +46,6 @@ const showTime = (sec) => {
 
 const handleLoad = async (categoryId) => {
 
- 
-  console.log(categoryId);
   const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
   const data = await res.json()
   const cardContainer = document.getElementById("card-container")
