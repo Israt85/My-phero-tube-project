@@ -5,7 +5,7 @@ const loadData = async () => {
   data.data.forEach((category) => {
     const div = document.createElement("div")
     div.innerHTML = `
-        <a onclick=handleLoad('${category.category_id}') class="tab">${category.category}</a>
+        <a onclick=handleLoad('${category.category_id}') class="tab hover:bg-red-600">${category.category}</a>
         `
     categoryBtn.appendChild(div)
   });
@@ -16,18 +16,19 @@ const showTime = (sec) => {
   let hrs = Math.floor(sec / 3600);
   sec %= 3600;
   let min = Math.floor(sec / 60);
-  sec %= 60;
+  
 
   const classList = [
     'bg-black',
     'px-2',
-    'w-40',
+    'w-36',
     'py-2',
     '-mt-10',
     'absolute',
     'text-white',
-    'ml-16',
-    'rounded-lg'
+    'ml-20',
+    'rounded-lg',
+    'text-center'
     
   ];
 
@@ -38,7 +39,7 @@ const showTime = (sec) => {
 
   const classString = classList.join(' ');
 
-  return `<p class="${classString}">${hrs}hrs ${min}min ${sec}secs</p>`;
+  return `<p class="${classString}">${hrs}hrs ${min}min ago</p>`;
 };
 
 
@@ -52,8 +53,8 @@ const handleLoad = async (categoryId) => {
   const cardContainer = document.getElementById("card-container")
   cardContainer.innerHTML=""
    if(categoryId === "1005"){
-    cardContainer.innerHTML=` <div class="w-screen h-52 mx-auto">
-        <img class="w-40 mx-96 my-5" src ="/Icon.png" />
+    cardContainer.innerHTML=` <div class="flex flex-col w-screen h-52 mx-auto">
+        <img class="w-40 mx-16 md:mx-64 lg:mx-96 my-5" src ="/Icon.png" />
         <p class="text-center font-semibold text-xl"> oopps!! here's no content available </p>
         </div>
     `
